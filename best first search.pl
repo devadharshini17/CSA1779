@@ -1,21 +1,4 @@
-node(a, 10, [b, c]).
-node(b, 8, [d, e]).
-node(c, 5, [f]).
-node(d, 6, []).
-node(e, 4, []).
-node(f, 3, []).
-best_first_search(Start, Goal, Path) :-
-    best_first_search([[Start]], Goal, Path).
 
-best_first_search([[Node|Path]|_], Node, [Node|Path]).
-best_first_search([Path|Paths], Goal, FinalPath) :-
-    extend(Path, NewPaths),
-    append(Paths, NewPaths, CombinedPaths),
-    sort_paths(CombinedPaths, SortedPaths),
-    best_first_search(SortedPaths, Goal, FinalPath).
-
-extend([Node|Path], NewPaths) :-
-    node(Node, _, Neighbors),
 connected(a, b).
 connected(a, c).
 connected(b, d).
